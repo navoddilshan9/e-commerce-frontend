@@ -4,7 +4,6 @@ import Announcement from '../components/Announcement'
 import Stores from '../components/Stores'
 import Newsletter from '../components/Map'
 import Footer from '../components/Footer'
-import Products from '../components/Products'
 import { mobile } from '../responsive'
 // import Stores from
 
@@ -38,12 +37,12 @@ const Select = styled.select`
 `
 const Option = styled.option``
 
-const ProductList = () => {
+const StoreList = () => {
   return (
     <Container>
       <Navbar />
       <Announcement />
-      <Title>Products</Title>
+      <Title>Stores</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Sort Products:</FilterText>
@@ -54,11 +53,11 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Stores />
       <Newsletter />
       <Footer />
     </Container>
   )
 }
 
-export default ProductList
+export default StoreList
