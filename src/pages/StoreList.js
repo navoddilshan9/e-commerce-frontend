@@ -5,6 +5,7 @@ import Stores from '../components/Stores'
 import Newsletter from '../components/Map'
 import Footer from '../components/Footer'
 import { mobile } from '../responsive'
+import { useEffect } from 'react'
 // import Stores from
 
 const Container = styled.div``
@@ -38,23 +39,17 @@ const Select = styled.select`
 const Option = styled.option``
 
 const StoreList = () => {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   return (
     <Container>
       <Navbar />
-      <Announcement />
-      <Title>Stores</Title>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
-      <Stores />
-      <Newsletter />
+
+      <div className='container'>
+        <Title>Stores</Title>
+        <Stores />
+      </div>
       <Footer />
     </Container>
   )

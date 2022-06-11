@@ -1,17 +1,18 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { categories } from '../data'
 import { mobile } from '../responsive'
 import CategoryItem from './CategoryItem'
 
 const Container = styled.div`
-  padding: 30px;
-  justify-content: space-between;
-  flex-direction: column;
-  ${mobile({ padding: '0px', flexDirection: 'column' })}
+  padding: 20px;
 `
 
 const Container2 = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `
 
 const Title = styled.h2`
@@ -22,12 +23,14 @@ const Title = styled.h2`
 
 const Categories = () => {
   return (
-    <div>
-      <Container className='container'>
+    <div className='container '>
+      <Container>
         <Title> Popular Categories</Title>
         <Container2>
           {categories.map((item) => (
-            <CategoryItem item={item} key={item.id} />
+            <Link to={`/stores/${item.id}`}>
+              <CategoryItem item={item} key={item.id} />
+            </Link>
           ))}
         </Container2>
       </Container>

@@ -1,113 +1,67 @@
-import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Pinterest,
-  Room,
-  Twitter,
-} from "@mui/icons-material";
-import styled from "styled-components";
-import { mobile } from "../responsive";
-
-const Container = styled.div`
-  display: flex;
-  ${mobile({ flexDirection: "column" })}
-`;
-
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-`;
-
-const Logo = styled.h1``;
-
-const Desc = styled.p`
-  margin: 20px 0px;
-`;
-
-const SocialContainer = styled.div`
-  display: flex;
-  align-items: center;
-  
-`;
-
-const SocialIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
-  background-color: #${(props) => props.color};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
-`;
-
-const Center = styled.div`
-  flex: 1;
-  padding: 20px;
-  ${mobile({ display: "none" })}
-`;
-
-const Title = styled.h3`
-  margin-bottom: 30px;
-`;
-
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ListItem = styled.li`
-  width: 50%;
-  margin-bottom: 10px;
-`;
+import React, { Component } from 'react'
 
 const Footer = () => {
   return (
-    <Container>
-      <Left>
-        <Logo>Dynamic Shop Tracker</Logo>
-        <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
-        </Desc>
-        <SocialContainer>
-          <SocialIcon color="3B5999">
-            <Facebook />
-          </SocialIcon>
-          <SocialIcon color="E4405F">
-            <Instagram />
-          </SocialIcon>
-          <SocialIcon color="55ACEE">
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon color="E60023">
-            <Pinterest />
-          </SocialIcon>
-        </SocialContainer>
-      </Left>
-      <Center>
-        <Title>Useful Links</Title>
-        <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
-        </List>
-      </Center>
-      
-    </Container>
-  );
-};
-
-export default Footer;
+    <div class='footer-dark mt-5'>
+      <footer>
+        <div class='container'>
+          <div class='row'>
+            <div class='col-sm-6 col-md-3 item'>
+              <h3>Services</h3>
+              <ul>
+                <li>
+                  <a href='#'>Hotel Bookings</a>
+                </li>
+                <li>
+                  <a href='#'>Events</a>
+                </li>
+                <li>
+                  <a href='#'>Parties</a>
+                </li>
+              </ul>
+            </div>
+            <div class='col-sm-6 col-md-3 item'>
+              <h3>About</h3>
+              <ul>
+                <li>
+                  <a href='#'>Company</a>
+                </li>
+                <li>
+                  <a href='#'>Team</a>
+                </li>
+                <li>
+                  <a href='#'>Careers</a>
+                </li>
+              </ul>
+            </div>
+            <div class='col-md-6 item text'>
+              <h3>Title</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+                odit iure distinctio rem alias aliquam voluptas quaerat velit
+                reiciendis repellat perferendis soluta itaque, illo quibusdam
+                eius voluptatem quo ullam officiis.
+              </p>
+            </div>
+            <div class='col item social'>
+              <a href='#'>
+                <i class='icon ion-social-facebook'></i>
+              </a>
+              <a href='#'>
+                <i class='icon ion-social-twitter'></i>
+              </a>
+              <a href='#'>
+                <i class='icon ion-social-snapchat'></i>
+              </a>
+              <a href='#'>
+                <i class='icon ion-social-instagram'></i>
+              </a>
+            </div>
+          </div>
+          <p class='copyright'>Title © 2022</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
+export default Footer

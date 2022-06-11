@@ -40,7 +40,7 @@ const Shops = () => {
   return (
     <Container>
       <Navbar />
-      <Announcement />
+
       <Title>Dresses</Title>
       <Products />
       <Newsletter />

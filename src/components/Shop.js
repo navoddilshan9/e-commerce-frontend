@@ -2,12 +2,11 @@ import {
   FavoriteBorderOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
-} from "@mui/icons-material";
-import styled from "styled-components";
+} from '@mui/icons-material'
+import styled from 'styled-components'
 
-const Maincontainer=styled.div`
-flex: 1;
-
+const Maincontainer = styled.div`
+  flex: 1;
 `
 
 const Info = styled.div`
@@ -24,7 +23,7 @@ const Info = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   cursor: pointer;
-`;
+`
 
 const Container = styled.div`
   flex: 1;
@@ -39,7 +38,7 @@ const Container = styled.div`
   &:hover ${Info} {
     opacity: 1;
   }
-`;
+`
 
 const Circle = styled.div`
   width: 200px;
@@ -47,12 +46,12 @@ const Circle = styled.div`
   border-radius: 50%;
   background-color: white;
   position: absolute;
-`;
+`
 
 const Image = styled.img`
   height: 75%;
   z-index: 2;
-`;
+`
 
 const Icon = styled.div`
   width: 40px;
@@ -68,30 +67,30 @@ const Icon = styled.div`
     background-color: #e9f5f5;
     transform: scale(1.1);
   }
-`;
+`
 
-const ShopName=styled.h3`
-text-align: center;
+const ShopName = styled.h3`
+  text-align: center;
 `
 
 const Shop = ({ item }) => {
   return (
     <Maincontainer>
-    <Container>
-      <Circle />
-      <Image src={item.img} />
-      <Info>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
-      </Info>
-    </Container>
-    <ShopName>{item.name}</ShopName>
+      <Container>
+        <Circle />
+        <Image src={item.img} />
+        <Info>
+          <Icon>
+            <SearchOutlined />
+          </Icon>
+          <Icon>
+            <FavoriteBorderOutlined />
+          </Icon>
+        </Info>
+      </Container>
+      <ShopName>{item.name}</ShopName>
     </Maincontainer>
-  );
-};
+  )
+}
 
-export default Shop;
+export default Shop
