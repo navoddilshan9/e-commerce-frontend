@@ -47,7 +47,7 @@ const InfoContainer = styled.div`
 `
 
 const Title = styled.h1`
-  font-weight: 200;
+  font-weight: 400;
 `
 
 const Desc = styled.p`
@@ -135,7 +135,8 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ width: '100%' })}
+  margin-top: 1rem;
+  ${mobile({ width: '100%' })};
 `
 
 const AmountContainer = styled.div`

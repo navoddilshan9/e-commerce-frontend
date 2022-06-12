@@ -4,9 +4,8 @@ import StoreList from './pages/StoreList'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
-
 import ProductList from './pages/ProductList'
-
+import HomeButton from './components/HomeButton'
 import {
   BrowserRouter as Router,
   Switch,
@@ -51,6 +50,7 @@ const App = () => {
           {user ? <Redirect to='/' /> : <Register />}
         </Route>
       </Switch>
+      <HomeButton />
     </Router>
   )
 }
