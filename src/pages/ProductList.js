@@ -1,12 +1,9 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
-import Navbar from '../components/Navbar'
-import Announcement from '../components/Announcement'
-import Stores from '../components/Stores'
-import Newsletter from '../components/Map'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 import { mobile } from '../responsive'
-import { useEffect } from 'react'
 // import Stores from
 
 const Container = styled.div``

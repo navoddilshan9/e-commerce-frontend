@@ -65,24 +65,14 @@ const Icon = styled.div`
   }
 `
 
-const Product = ({ item }) => {
+const Store = ({ item }) => {
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
-      <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
-      </Info>
+      <Info>{item.cat}</Info>
     </Container>
   )
 }
 
-export default Product
+export default Store

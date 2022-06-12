@@ -1,29 +1,42 @@
 import { Add, Remove } from '@mui/icons-material'
+import { useState } from 'react'
 import styled from 'styled-components'
-import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import Newsletter from '../components/Map'
 import { mobile } from '../responsive'
-import { useState } from 'react'
 
-const Container = styled.div``
+const Container = styled.div`
+  height: 30rem;
+`
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: '10px', flexDirection: 'column' })}
+  height: 40rem;
+  ${mobile({ padding: '10px', flexDirection: 'column' })};
 `
 
 const ImgContainer = styled.div`
   flex: 1;
   max-height: 20rem;
+
+  &:hover {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
 `
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 1rem;
   ${mobile({ height: '40vh' })}
 `
 
@@ -44,6 +57,43 @@ const Desc = styled.p`
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
+  display: inline-block;
+  width: auto;
+  height: 38px;
+  background-color: #6ab070;
+  -webkit-border-radius: 3px 4px 4px 3px;
+  -moz-border-radius: 3px 4px 4px 3px;
+  border-radius: 3px 4px 4px 3px;
+  border-left: 1px solid #6ab070;
+  margin-left: 19px;
+  position: relative;
+  color: white;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  padding: 0 10px 0 10px;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: -19px;
+    width: 0;
+    height: 0;
+    border-top: 19px solid transparent;
+    border-bottom: 19px solid transparent;
+    border-right: 19px solid #6ab070;
+  }
+  &:after {
+    content: '';
+    background-color: white;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    display: block;
+    position: absolute;
+    left: -9px;
+    top: 17px;
+  }
 `
 
 const FilterContainer = styled.div`
@@ -81,7 +131,7 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``
 
 const AddContainer = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,6 +161,8 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
+  margin-right: auto;
+  margin-left: 10%;
   &:hover {
     background-color: #f8f4f4;
   }

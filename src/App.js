@@ -4,7 +4,7 @@ import StoreList from './pages/StoreList'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
-import Item from './pages/Item'
+
 import ProductList from './pages/ProductList'
 
 import {

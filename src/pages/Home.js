@@ -1,9 +1,7 @@
-import React from 'react'
 import Categories from '../components/Categories'
 import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import NearbyShops from '../components/NearbyShops'
 import Map from '../components/Map'
+import NearbyShops from '../components/NearbyShops'
 import Slider from '../components/Slider'
 
 const Home = () => {

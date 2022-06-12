@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 
 const containerStyle = {
@@ -30,7 +30,7 @@ function Newsletter() {
   }, [])
 
   return isLoaded ? (
-    <div className='container'>
+    <div className=''>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

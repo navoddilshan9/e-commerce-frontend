@@ -1,11 +1,9 @@
-import styled from 'styled-components'
-import Navbar from '../components/Navbar'
-import Announcement from '../components/Announcement'
-import Stores from '../components/Stores'
-import Newsletter from '../components/Map'
-import Footer from '../components/Footer'
-import { mobile } from '../responsive'
 import { useEffect } from 'react'
+import styled from 'styled-components'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+import Stores from '../components/Stores'
+import { mobile } from '../responsive'
 // import Stores from
 
 const Container = styled.div``
@@ -45,7 +43,6 @@ const StoreList = () => {
   return (
     <Container>
       <Navbar />
-
       <div className='container'>
         <Title>Stores</Title>
         <Stores />

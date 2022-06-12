@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const Footer = () => {
   return (
-    <div class='footer-dark mt-5'>
+    <div class='footer-dark'>
       <footer>
         <div class='container'>
           <div class='row'>
