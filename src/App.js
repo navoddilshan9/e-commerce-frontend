@@ -3,9 +3,9 @@ import Home from './pages/Home'
 import StoreList from './pages/StoreList'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import Cart from './pages/Cart'
 import ProductList from './pages/ProductList'
 import HomeButton from './components/HomeButton'
+import Cart from './pages/Cart'
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,21 +34,23 @@ const App = () => {
           <Product />
         </Route>
 
-        {/* <Route exact path='/products'>
-          <ProductList />
-        </Route> */}
-
         <Route path='/cart'>
           <Cart />
         </Route>
+
+        {/* <Route exact path='/products'>
+          <ProductList />
+        </Route> */}
 
         <Route path='/login'>
           {' '}
           <Login />
         </Route>
+
         <Route path='/register'>
           {user ? <Redirect to='/' /> : <Register />}
         </Route>
+        {/* <Route path='/cart'>{user ? <Redirect to='/' /> : <Register />}</Route> */}
       </Switch>
       <HomeButton />
     </Router>

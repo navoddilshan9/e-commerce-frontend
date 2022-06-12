@@ -1,5 +1,6 @@
-import { Add, Remove } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { Add, Remove } from '@mui/icons-material'
 import styled from 'styled-components'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
@@ -174,7 +175,6 @@ const Product = () => {
   return (
     <Container>
       <Navbar />
-
       <div className='container'>
         <Wrapper>
           <ImgContainer>
@@ -212,6 +212,7 @@ const Product = () => {
                   <Add />
                 </span>
               </AmountContainer>
+
               <Button>ADD TO CART</Button>
             </AddContainer>
           </InfoContainer>

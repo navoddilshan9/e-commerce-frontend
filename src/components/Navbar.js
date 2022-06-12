@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
 import { Search } from '@mui/icons-material'
 import { Badge } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import axios from 'axios'
 
 const Container = styled.div`
   height: 60px;
@@ -81,18 +83,22 @@ const NavBar = () => {
           </SearchContainer>
         </Center>
         <Right>
-          <MenuItem className='ml-5'>
-            <Badge badgeContent={4} color='primary'>
-              <ShoppingCartIcon />
-            </Badge>
-          </MenuItem>
-          <MenuItem>
-            <Locationbtn> SignIn </Locationbtn>
+          <Link to='/cart'>
+            <MenuItem>
+              <Badge badgeContent={4} color='primary'>
+                <ShoppingCartIcon />
+              </Badge>
+            </MenuItem>
+          </Link>
+          {/* <MenuItem>
+            <Link to={`/login`}>
+              <Locationbtn> SignIn </Locationbtn>
+            </Link>
           </MenuItem>
 
           <MenuItem>
             <Locationbtn>Register </Locationbtn>
-          </MenuItem>
+          </MenuItem> */}
         </Right>
       </Wrapper>
     </Container>
