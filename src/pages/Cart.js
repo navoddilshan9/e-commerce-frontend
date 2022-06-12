@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import { mobile } from '../responsive'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-
+import Paypal from '../Services/Paypal'
 const Container = styled.div``
 
 const Wrapper = styled.div`
@@ -144,7 +144,7 @@ const SummaryTitle = styled.h1`
 `
 
 const SummaryItem = styled.div`
-  margin: 30px 0px;
+  margin: 20px 0px;
   display: flex;
   justify-content: space-between;
   font-weight: ${(props) => props.type === 'total' && '500'};
@@ -165,6 +165,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const [count, setCount] = useState(0)
+
   return (
     <Container>
       <Navbar />
@@ -239,7 +240,7 @@ const Cart = () => {
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>$ 80</SummaryItemPrice>
               </SummaryItem>
-              <Button>CHECKOUT NOW</Button>
+              <Paypal />
             </Summary>
           </Bottom>
         </Wrapper>
