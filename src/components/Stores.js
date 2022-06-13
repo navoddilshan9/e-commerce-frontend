@@ -21,7 +21,7 @@ const Stores = () => {
       {STORES.map((item) => {
         if (
           location.pathname.split('/')[2] == item.categoryId[0] ||
-          location.pathname.split('/')[2] == item.categoryId[0]
+          location.pathname.split('/')[2] == item.categoryId[1]
         ) {
           return (
             <Link to={`/store/{item.storeId}`}>

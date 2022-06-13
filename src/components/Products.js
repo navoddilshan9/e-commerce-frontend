@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { popularProducts } from '../data'
+import { PRODUCTS } from '../data/data/dummy-data'
 import Product from './Product'
 
 const Container = styled.div`
@@ -11,13 +11,19 @@ const Container = styled.div`
 `
 
 const Products = () => {
+  const location = useLocation()
   return (
     <Container>
-      {popularProducts.map((item) => (
-        <Link to={`/product/${item.id}`}>
-          <Product item={item} key={item.id} />
-        </Link>
-      ))}
+      {PRODUCTS.map((item) => {
+        console.log(item.productId)
+        if (item.storeId == location.pathname.split('/')[2]) {
+          return (
+            <Link to={`/product/${item.productId}`}>
+              <Product item={item} key={item.id} />
+            </Link>
+          )
+        }
+      })}
     </Container>
   )
 }

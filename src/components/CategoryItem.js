@@ -73,7 +73,15 @@ const Icon = styled.div`
 
 const ShopName = styled.h3`
   text-align: center;
+  font-size: 1.5rem;
+  color: white;
 `
+const Title = styled.div`
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 0.8rem;
+`
+
 const CategoryItem = ({ item }) => {
   return (
     <Maincontainer>
@@ -81,7 +89,10 @@ const CategoryItem = ({ item }) => {
         <Circle />
         <Image src={item.picture} />
         <Info>
-          <ShopName>{item.categoryName}</ShopName>
+          <Title>
+            {' '}
+            <ShopName>{item.categoryName} </ShopName>
+          </Title>
         </Info>
       </Container>
     </Maincontainer>

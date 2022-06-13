@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { STORES } from '../data/data/dummy-data'
 import Shop from './Shop'
@@ -26,7 +27,9 @@ const NearbyShops = () => {
         <Title>NearBy Shops</Title>
         <Container2>
           {STORES.map((item) => (
-            <Shop item={item} key={item.id} />
+            <Link to={`/store/${item.storeId}`}>
+              <Shop item={item} key={item.id} />
+            </Link>
           ))}
         </Container2>
       </Container>

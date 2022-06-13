@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { Add, Remove } from '@mui/icons-material'
 import styled from 'styled-components'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { mobile } from '../responsive'
-
+import { useEffect } from 'react'
+import { PRODUCTS } from '../data/data/dummy-data'
 const Container = styled.div`
   height: 30rem;
 `
@@ -172,51 +173,64 @@ const Button = styled.button`
 
 const Product = () => {
   const [count, setCount] = useState(0)
+  const [product, setProduct] = useState(null)
+  const location = useLocation()
+  useEffect(() => {
+    for (let index = 0; index < PRODUCTS.length; index++) {
+      const element = PRODUCTS[index]
+      if (element.productId == location.pathname.split('/')[2]) {
+        setProduct(element)
+      }
+    }
+  }, [])
+  const getProduct = () => {}
   return (
     <Container>
       <Navbar />
       <div className='container'>
-        <Wrapper>
-          <ImgContainer>
-            <Image src='https://i.ibb.co/S6qMxwr/jean.jpg' />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Denim Jumpsuit</Title>
-            <Desc>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-              iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-              tristique tortor pretium ut. Curabitur elit justo, consequat id
-              condimentum ac, volutpat ornare.
-            </Desc>
-            <Price>$ 20</Price>
-            <AddContainer>
-              <AmountContainer>
-                <span
-                  onClick={() => {
-                    if (count > 0) {
-                      let temp = count - 1
-                      setCount(temp)
-                    }
-                  }}
-                >
-                  <Remove />
-                </span>
-                <Amount> {count}</Amount>
-                <span
-                  onClick={() => {
-                    let temp = count + 1
-                    setCount(temp)
-                  }}
-                >
-                  <Add />
-                </span>
-              </AmountContainer>
+        {product != null ? (
+          <>
+            <Wrapper>
+              <ImgContainer>
+                <Image src={product.picture} />
+              </ImgContainer>
+              <InfoContainer>
+                <Title>{product.productName}</Title>
+                <Desc>{product.description}</Desc>
+                <Price>Rs.{product.price}</Price>
+                <AddContainer>
+                  <AmountContainer>
+                    <span
+                      onClick={() => {
+                        if (count > 0) {
+                          let temp = count - 1
+                          setCount(temp)
+                        }
+                      }}
+                    >
+                      <Remove />
+                    </span>
+                    <Amount> {count}</Amount>
+                    <span
+                      onClick={() => {
+                        if (count < product.stockQty) {
+                          let temp = count + 1
+                          setCount(temp)
+                        }
+                      }}
+                    >
+                      <Add />
+                    </span>
+                  </AmountContainer>
 
-              <Button>ADD TO CART</Button>
-            </AddContainer>
-          </InfoContainer>
-        </Wrapper>
+                  <Button>ADD TO CART</Button>
+                </AddContainer>
+              </InfoContainer>
+            </Wrapper>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <Footer />
     </Container>
