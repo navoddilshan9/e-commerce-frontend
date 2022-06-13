@@ -6,10 +6,7 @@ const containerStyle = {
   height: '400px',
 }
 
-const center = {
-  lat: 6.0329,
-  lng: 80.2158,
-}
+const center = { lat: 6.0329, lng: 80.2158 }
 
 function Newsletter() {
   const { isLoaded } = useJsApiLoader({
@@ -18,6 +15,16 @@ function Newsletter() {
   })
 
   const [map, setMap] = React.useState(null)
+  const [location, setLocation] = React.useState(null)
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLocation({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      })
+    })
+  }, [])
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center)
@@ -29,11 +36,11 @@ function Newsletter() {
     setMap(null)
   }, [])
 
-  return isLoaded ? (
+  return isLoaded && location != null ? (
     <div className=''>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={location}
         zoom={5}
         onLoad={onLoad}
         onUnmount={onUnmount}
