@@ -121,7 +121,7 @@ const ProductAmount = styled.div`
 
 const ProductPrice = styled.div`
   font-size: 30px;
-  font-weight: 200;
+  font-weight: 600;
   ${mobile({ marginBottom: '20px' })}
 `
 
@@ -165,11 +165,9 @@ const Button = styled.button`
 
 const Cart = () => {
   const [count, setCount] = useState(0)
-
   return (
     <Container>
       <Navbar />
-
       <div className='container'>
         <Wrapper>
           <Title>YOUR BAG</Title>
@@ -181,7 +179,6 @@ const Cart = () => {
               <TopText>Shopping Bag(2)</TopText>
               <TopText>Your Wishlist (0)</TopText>
             </TopTexts>
-            <TopButton type='filled'>CHECKOUT NOW</TopButton>
           </Top>
           <Bottom>
             <Info>
