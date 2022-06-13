@@ -24,7 +24,7 @@ const Stores = () => {
           location.pathname.split('/')[2] == item.categoryId[1]
         ) {
           return (
-            <Link to={`/store/{item.storeId}`}>
+            <Link to={`/store/${item.storeId}`}>
               <Store item={item} key={item.id} />
             </Link>
           )
