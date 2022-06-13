@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { categories } from '../data'
 import { mobile } from '../responsive'
 import CategoryItem from './CategoryItem'
-
+import { CATEGORIES } from '../data/data/dummy-data'
 const Container = styled.div`
   padding: 20px;
 `
@@ -27,8 +27,8 @@ const Categories = () => {
       <Container>
         <Title> Popular Categories</Title>
         <Container2>
-          {categories.map((item) => (
-            <Link to={`/stores/${item.id}`}>
+          {CATEGORIES.map((item) => (
+            <Link to={`/stores/${item.categoryId}`}>
               <CategoryItem item={item} key={item.id} />
             </Link>
           ))}

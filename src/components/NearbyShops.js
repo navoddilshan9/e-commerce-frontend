@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { nearbyShops } from '../data'
+import { STORES } from '../data/data/dummy-data'
 import Shop from './Shop'
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const NearbyShops = () => {
       <Container>
         <Title>NearBy Shops</Title>
         <Container2>
-          {nearbyShops.map((item) => (
+          {STORES.map((item) => (
             <Shop item={item} key={item.id} />
           ))}
         </Container2>

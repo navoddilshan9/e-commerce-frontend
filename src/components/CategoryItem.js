@@ -79,10 +79,11 @@ const CategoryItem = ({ item }) => {
     <Maincontainer>
       <Container>
         <Circle />
-        <Image src={item.img} />
-        <Info></Info>
+        <Image src={item.picture} />
+        <Info>
+          <ShopName>{item.categoryName}</ShopName>
+        </Info>
       </Container>
-      <ShopName>{item.name}</ShopName>
     </Maincontainer>
   )
 }

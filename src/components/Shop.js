@@ -78,7 +78,7 @@ const Shop = ({ item }) => {
     <Maincontainer>
       <Container>
         <Circle />
-        <Image src={item.img} />
+        <Image src={item.picture} />
         <Info>
           <Icon>
             <SearchOutlined />

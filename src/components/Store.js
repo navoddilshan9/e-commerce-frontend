@@ -69,7 +69,7 @@ const Store = ({ item }) => {
   return (
     <Container>
       <Circle />
-      <Image src={item.img} />
+      <Image src={item.picture} />
       <Info>{item.cat}</Info>
     </Container>
   )
