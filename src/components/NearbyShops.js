@@ -18,6 +18,7 @@ const Title = styled.h2`
   align-items: center;
   width: 50%;
   padding: 10px;
+  white-space: nowrap;
 `
 
 const NearbyShops = () => {

@@ -77,7 +77,7 @@ const ShopName = styled.h3`
   color: white;
 `
 const Title = styled.div`
-  border-radius: 10%;
+  border-radius: 30px 30px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5rem 0.8rem;
 `

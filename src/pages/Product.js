@@ -191,41 +191,43 @@ const Product = () => {
         {product != null ? (
           <>
             <Wrapper>
-              <ImgContainer>
-                <Image src={product.picture} />
-              </ImgContainer>
-              <InfoContainer>
-                <Title>{product.productName}</Title>
-                <Desc>{product.description}</Desc>
-                <Price>Rs.{product.price}</Price>
-                <AddContainer>
-                  <AmountContainer>
-                    <span
-                      onClick={() => {
-                        if (count > 0) {
-                          let temp = count - 1
-                          setCount(temp)
-                        }
-                      }}
-                    >
-                      <Remove />
-                    </span>
-                    <Amount> {count}</Amount>
-                    <span
-                      onClick={() => {
-                        if (count < product.stockQty) {
-                          let temp = count + 1
-                          setCount(temp)
-                        }
-                      }}
-                    >
-                      <Add />
-                    </span>
-                  </AmountContainer>
+              <div className='row'>
+                <div className='col-sm-6'>
+                  <Image src={product.picture} />
+                </div>
+                <div className='col-sm-6'>
+                  <Title>{product.productName}</Title>
+                  <Desc>{product.description}</Desc>
+                  <Price>Rs.{product.price}</Price>
+                  <AddContainer>
+                    <AmountContainer>
+                      <span
+                        onClick={() => {
+                          if (count > 0) {
+                            let temp = count - 1
+                            setCount(temp)
+                          }
+                        }}
+                      >
+                        <Remove />
+                      </span>
+                      <Amount> {count}</Amount>
+                      <span
+                        onClick={() => {
+                          if (count < product.stockQty) {
+                            let temp = count + 1
+                            setCount(temp)
+                          }
+                        }}
+                      >
+                        <Add />
+                      </span>
+                    </AmountContainer>
 
-                  <Button>ADD TO CART</Button>
-                </AddContainer>
-              </InfoContainer>
+                    <Button>ADD TO CART</Button>
+                  </AddContainer>
+                </div>
+              </div>
             </Wrapper>
           </>
         ) : (

@@ -171,7 +171,7 @@ const Cart = () => {
       <div className='container'>
         <Wrapper>
           <Title>YOUR BAG</Title>
-          <Top>
+          {/* <Top>
             <Link to={'/'}>
               <TopButton>CONTINUE SHOPPING</TopButton>
             </Link>
@@ -179,66 +179,79 @@ const Cart = () => {
               <TopText>Shopping Bag(2)</TopText>
               <TopText>Your Wishlist (0)</TopText>
             </TopTexts>
-          </Top>
+          </Top> */}
           <Bottom>
             <Info>
-              <Product>
-                <ProductDetail>
-                  <Image src='https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A' />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> JESSIE THUNDER SHOES
-                    </ProductName>
-                    <ProductId>
-                      <b>ID:</b> 93813718293
-                    </ProductId>
-                  </Details>
-                </ProductDetail>
-                <PriceDetail>
-                  <ProductAmountContainer>
-                    <Remove
-                      onClick={() => {
-                        if (count > 0) {
-                          let temp = count - 1
+              <div className='row'>
+                <div className='col-md-8'>
+                  <div className='row'>
+                    <div className='col-md-6'>
+                      <Image src='https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A' />
+                    </div>
+                    <div className='col-md-6'>
+                      <Details>
+                        <ProductName>
+                          <b>Product:</b> JESSIE THUNDER SHOES
+                        </ProductName>
+                        <ProductName>
+                          Lorem, ipsum dolor sit amet consectetur adipisicing
+                          elit. Voluptates commodi non porro atque dicta
+                          asperiores neque quod nulla consequuntur molestias rem
+                          esse optio similique accusamus, blanditiis nesciunt
+                          distinctio velit ipsa!
+                        </ProductName>
+                      </Details>
+                    </div>
+                  </div>
+
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <Remove
+                        onClick={() => {
+                          if (count > 0) {
+                            let temp = count - 1
+                            setCount(temp)
+                          }
+                        }}
+                      />
+                      <ProductAmount>
+                        {' '}
+                        <Amount> {count}</Amount>
+                      </ProductAmount>
+                      <Add
+                        onClick={() => {
+                          let temp = count + 1
                           setCount(temp)
-                        }
-                      }}
-                    />
-                    <ProductAmount>
-                      {' '}
-                      <Amount> {count}</Amount>
-                    </ProductAmount>
-                    <Add
-                      onClick={() => {
-                        let temp = count + 1
-                        setCount(temp)
-                      }}
-                    />
-                  </ProductAmountContainer>
-                  <ProductPrice>$ {count * 120}</ProductPrice>
-                </PriceDetail>
-              </Product>
+                        }}
+                      />
+                    </ProductAmountContainer>
+                    <ProductPrice>$ {count * 120}</ProductPrice>
+                  </PriceDetail>
+                </div>
+                <div className='col-md-4'>
+                  <Summary>
+                    <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+                    <SummaryItem>
+                      <SummaryItemText>Subtotal</SummaryItemText>
+                      <SummaryItemPrice>$ 80</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryItem>
+                      <SummaryItemText>Estimated Shipping</SummaryItemText>
+                      <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryItem>
+                      <SummaryItemText>Shipping Discount</SummaryItemText>
+                      <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryItem type='total'>
+                      <SummaryItemText>Total</SummaryItemText>
+                      <SummaryItemPrice>$ 80</SummaryItemPrice>
+                    </SummaryItem>
+                    <Paypal />
+                  </Summary>
+                </div>
+              </div>
             </Info>
-            <Summary>
-              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-              <SummaryItem>
-                <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>$ 80</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Estimated Shipping</SummaryItemText>
-                <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Shipping Discount</SummaryItemText>
-                <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem type='total'>
-                <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>$ 80</SummaryItemPrice>
-              </SummaryItem>
-              <Paypal />
-            </Summary>
           </Bottom>
         </Wrapper>
       </div>

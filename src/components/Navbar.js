@@ -33,6 +33,7 @@ const Locationbtn = styled.button`
   border: none;
   background-color: #4d91f2;
   color: white;
+  white-space: nowrap;
 `
 
 const SearchContainer = styled.div`
