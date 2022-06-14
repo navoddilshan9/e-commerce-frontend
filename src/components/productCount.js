@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Add, Remove } from '@mui/icons-material'
 import { useState } from 'react'
@@ -36,8 +36,13 @@ const ProductPrice = styled.div`
   font-weight: 600;
   ${mobile({ marginBottom: '20px' })}
 `
-const ProductCount = ({ itemCount }) => {
+const ProductCount = ({ itemCount, setTotal, total, productItem }) => {
   const [count, setCount] = useState(itemCount)
+  useEffect(() => {
+    let ammount = count * productItem.price
+    setTotal(ammount + total)
+    console.log(ammount)
+  }, [count])
   return (
     <div>
       <PriceDetail>
@@ -61,7 +66,7 @@ const ProductCount = ({ itemCount }) => {
             }}
           />
         </ProductAmountContainer>
-        <ProductPrice>Rs.{count * 120}</ProductPrice>
+        <ProductPrice>Rs.{count * productItem.price}</ProductPrice>
       </PriceDetail>
     </div>
   )

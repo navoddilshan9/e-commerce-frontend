@@ -154,6 +154,7 @@ const Button = styled.button`
 
 const Cart = () => {
   const [cart, setCart] = useState(null)
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     getCarts()
@@ -204,7 +205,12 @@ const Cart = () => {
                                       {productItem.description}
                                     </ProductName>
                                   </Details>
-                                  <ProductCount itemCount={item.qty} />
+                                  <ProductCount
+                                    itemCount={item.qty}
+                                    setTotal={setTotal}
+                                    total={total}
+                                    productItem={productItem}
+                                  />
                                 </div>
                               </div>
                             </>
@@ -221,7 +227,7 @@ const Cart = () => {
                     <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                     <SummaryItem>
                       <SummaryItemText>Subtotal</SummaryItemText>
-                      <SummaryItemPrice>$ 80</SummaryItemPrice>
+                      <SummaryItemPrice>$ 5.90</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
                       <SummaryItemText>Estimated Shipping</SummaryItemText>
