@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { Add, Remove } from '@mui/icons-material'
 import styled from 'styled-components'
@@ -7,6 +7,8 @@ import Navbar from '../components/Navbar'
 import { mobile } from '../responsive'
 import { useEffect } from 'react'
 import { PRODUCTS } from '../data/data/dummy-data'
+
+import axios from 'axios'
 const Container = styled.div`
   height: 30rem;
 `
@@ -175,6 +177,7 @@ const Product = () => {
   const [count, setCount] = useState(0)
   const [product, setProduct] = useState(null)
   const location = useLocation()
+  let history = useHistory()
   useEffect(() => {
     for (let index = 0; index < PRODUCTS.length; index++) {
       const element = PRODUCTS[index]
@@ -183,6 +186,25 @@ const Product = () => {
       }
     }
   }, [])
+
+  const handleSubmit = async () => {
+    const dataModel = {
+      qty: count,
+      itemId: product.productId,
+      customerId: 1,
+    }
+    console.log(product.productId)
+
+    await axios
+      .post('http://localhost:8000/api/v1/cart/addCart', dataModel)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    history.push('/cart')
+  }
   const getProduct = () => {}
   return (
     <Container>
@@ -224,7 +246,13 @@ const Product = () => {
                       </span>
                     </AmountContainer>
 
-                    <Button>ADD TO CART</Button>
+                    <Button
+                      onClick={() => {
+                        handleSubmit()
+                      }}
+                    >
+                      ADD TO CART
+                    </Button>
                   </AddContainer>
                 </div>
               </div>

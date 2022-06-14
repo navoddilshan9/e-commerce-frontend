@@ -1,4 +1,3 @@
-import { Add, Remove } from '@mui/icons-material'
 import styled from 'styled-components'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
@@ -6,6 +5,10 @@ import { mobile } from '../responsive'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Paypal from '../Services/Paypal'
+import { useEffect } from 'react'
+import axios from 'axios'
+import ProductCount from '../components/productCount'
+import { PRODUCTS } from '../data/data/dummy-data'
 const Container = styled.div``
 
 const Wrapper = styled.div`
@@ -76,7 +79,7 @@ const ProductDetail = styled.div`
 `
 
 const Image = styled.img`
-  width: 200px;
+  width: 100%;
 `
 
 const Details = styled.div`
@@ -98,20 +101,6 @@ const ProductColor = styled.div`
 `
 
 const ProductSize = styled.span``
-
-const PriceDetail = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-const ProductAmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`
 
 const ProductAmount = styled.div`
   font-size: 24px;
@@ -164,69 +153,68 @@ const Button = styled.button`
 `
 
 const Cart = () => {
-  const [count, setCount] = useState(0)
+  const [cart, setCart] = useState(null)
+
+  useEffect(() => {
+    getCarts()
+  }, [])
+
+  const getCarts = async () => {
+    const dataModal = {
+      customerId: 1,
+    }
+    await axios
+      .post('http://localhost:8000/api/v1/cart/getCartByCustomerId', dataModal)
+      .then((res) => {
+        console.log(res)
+        setCart(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   return (
     <Container>
       <Navbar />
       <div className='container'>
         <Wrapper>
           <Title>YOUR BAG</Title>
-          {/* <Top>
-            <Link to={'/'}>
-              <TopButton>CONTINUE SHOPPING</TopButton>
-            </Link>
-            <TopTexts>
-              <TopText>Shopping Bag(2)</TopText>
-              <TopText>Your Wishlist (0)</TopText>
-            </TopTexts>
-          </Top> */}
           <Bottom>
             <Info>
               <div className='row'>
                 <div className='col-md-8'>
-                  <div className='row'>
-                    <div className='col-md-6'>
-                      <Image src='https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A' />
-                    </div>
-                    <div className='col-md-6'>
-                      <Details>
-                        <ProductName>
-                          <b>Product:</b> JESSIE THUNDER SHOES
-                        </ProductName>
-                        <ProductName>
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Voluptates commodi non porro atque dicta
-                          asperiores neque quod nulla consequuntur molestias rem
-                          esse optio similique accusamus, blanditiis nesciunt
-                          distinctio velit ipsa!
-                        </ProductName>
-                      </Details>
-                    </div>
-                  </div>
+                  {cart != null ? (
+                    cart.map((item) => {
+                      for (let j = 0; j < PRODUCTS.length; j++) {
+                        const productItem = PRODUCTS[j]
 
-                  <PriceDetail>
-                    <ProductAmountContainer>
-                      <Remove
-                        onClick={() => {
-                          if (count > 0) {
-                            let temp = count - 1
-                            setCount(temp)
-                          }
-                        }}
-                      />
-                      <ProductAmount>
-                        {' '}
-                        <Amount> {count}</Amount>
-                      </ProductAmount>
-                      <Add
-                        onClick={() => {
-                          let temp = count + 1
-                          setCount(temp)
-                        }}
-                      />
-                    </ProductAmountContainer>
-                    <ProductPrice>$ {count * 120}</ProductPrice>
-                  </PriceDetail>
+                        if (item.itemId == productItem.productId) {
+                          return (
+                            <>
+                              <div className='row'>
+                                <div className='col-md-6'>
+                                  <Image src={productItem.picture} />
+                                </div>
+                                <div className='col-md-6'>
+                                  <Details>
+                                    <ProductName>
+                                      <b>Product:</b> {productItem.productName}
+                                    </ProductName>
+                                    <ProductName>
+                                      {productItem.description}
+                                    </ProductName>
+                                  </Details>
+                                  <ProductCount itemCount={item.qty} />
+                                </div>
+                              </div>
+                            </>
+                          )
+                        }
+                      }
+                    })
+                  ) : (
+                    <></>
+                  )}
                 </div>
                 <div className='col-md-4'>
                   <Summary>
