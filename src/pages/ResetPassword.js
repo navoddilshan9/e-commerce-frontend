@@ -1,37 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Axios from 'axios'
 import '../components/styles/main.css'
 import Button from '@material-ui/core/Button'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
-
 import * as yup from 'yup'
-
 import { ErrorMessage, Formik, Form, Field } from 'formik'
-const SignupSeller = ({ submitForm }) => {
+import { useHistory } from 'react-router-dom'
+
+const ResetPassword = ({ submitForm }) => {
   const [passwordShown, setPasswordShown] = useState(false)
+  const hist = useHistory()
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown)
   }
 
   const addSeller = (values) => {
-    Axios.post('http://localhost:3001/sellerReg', {
+    Axios.post('http://localhost:3001/sellerResetPw', {
       fname: values.fname,
       lname: values.lname,
       contactno: values.contactno,
       email: values.email,
       password: values.password,
     }).then((response) => {
-      // alert(response.data.msg)
-      window.location = '/login'
+      if (response.data.msg) {
+        alert(response.data.msg)
+        hist.push('/SigninSeller')
+      }
+      if (response.data.err) {
+        alert(response.data.err)
+      }
     })
   }
 
-  const phoneRegExp = '^[0].{9}$'
+  const phoneRegExp = '^[0][1-9].{8}$'
+
   const digitsOnly = (value) => /^\d+$/.test(value)
   const validationsRegister = yup.object().shape({
-    fname: yup.string().required('First name is required'),
-    lname: yup.string().required('Last name is required'),
+    fname: yup.string(),
+
+    lname: yup.string(),
+
     contactno: yup
       .string()
       .length(10, 'Phone number length should 10 characters long')
@@ -40,23 +49,23 @@ const SignupSeller = ({ submitForm }) => {
         'Phone number should contain only digits',
         digitsOnly
       )
-      .matches(phoneRegExp, 'Contact number should start with zero')
-      .required('A phone number is required'),
-    email: yup.string().email('invalid email').required('Email is mandatory'),
+      .matches(phoneRegExp, 'invalid '),
+
+    email: yup.string().email('Invalid email'),
+
     password: yup
       .string()
-      .min(8, 'Password must be at least 8 characters long')
-      .required('Password is mandatory'),
+      .min(8, 'Password must be at least 8 characters long'),
+
     confirmation: yup
       .string()
-      .oneOf([yup.ref('password'), null], 'The passwords are different')
-      .required('Password confirmation is mandatory'),
+      .oneOf([yup.ref('password'), null], 'The passwords are different'),
   })
 
   return (
     <div className='center-div'>
       <div className='container'>
-        <h1>Sign up as Seller</h1>
+        <h1>Reset Password for Seller</h1>
         <Formik
           initialValues={{}}
           onSubmit={addSeller}
@@ -68,6 +77,7 @@ const SignupSeller = ({ submitForm }) => {
                 name='fname'
                 className='form-field'
                 placeholder='First name'
+                required
               />
 
               <ErrorMessage
@@ -81,6 +91,7 @@ const SignupSeller = ({ submitForm }) => {
                 name='lname'
                 className='form-field'
                 placeholder='Last name'
+                required
               />
               <ErrorMessage
                 component='span'
@@ -88,13 +99,14 @@ const SignupSeller = ({ submitForm }) => {
                 className='form-error'
               />
             </div>
+
             <div className='register-form-group'>
               <Field
                 name='contactno'
                 className='form-field'
                 placeholder='Contact number'
+                required
               />
-
               <ErrorMessage
                 component='span'
                 name='contactno'
@@ -103,7 +115,12 @@ const SignupSeller = ({ submitForm }) => {
             </div>
 
             <div className='register-form-group'>
-              <Field name='email' className='form-field' placeholder='Email' />
+              <Field
+                name='email'
+                className='form-field'
+                placeholder='Email'
+                required
+              />
 
               <ErrorMessage
                 component='span'
@@ -116,13 +133,13 @@ const SignupSeller = ({ submitForm }) => {
               <Field
                 name='password'
                 className='form-field'
-                placeholder='Password'
+                placeholder='New Password'
                 type={passwordShown ? 'text' : 'password'}
+                required
               />
-              <VisibilityOffIcon
-                onClick={togglePassword}
-                className='visibility'
-              />
+
+              <VisibilityOffIcon onClick={togglePassword} />
+
               <ErrorMessage
                 component='span'
                 name='password'
@@ -134,31 +151,34 @@ const SignupSeller = ({ submitForm }) => {
               <Field
                 name='confirmation'
                 className='form-field'
-                placeholder='Confirm password'
+                placeholder='Confirm New Password'
                 type={passwordShown ? 'text' : 'password'}
+                required
               />
               <VisibilityOffIcon onClick={togglePassword} />
               <ErrorMessage
                 component='span'
                 name='confirmation'
+                V
                 className='form-error'
               />
             </div>
+
             <br />
+
             <Button
               type='submit'
-              variant='outlined'
-              color='primary'
+              variant='contained'
               style={{
                 height: '2%',
-                width: '30%',
+                width: '45%',
                 color: 'black',
                 border: '2px solid',
-                fontSize: '15px',
+                fontSize: '12px',
                 backgroundColor: '#8a9c8f',
               }}
             >
-              Sign up
+              Reset Password
             </Button>
           </Form>
         </Formik>
@@ -166,4 +186,4 @@ const SignupSeller = ({ submitForm }) => {
     </div>
   )
 }
-export default SignupSeller
+export default ResetPassword

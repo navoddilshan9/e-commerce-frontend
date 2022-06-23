@@ -56,7 +56,7 @@ const SignupCustomer = ({ submitForm }) => {
   })
 
   return (
-    <div className='register'>
+    <div className='center-div'>
       <div className='container'>
         <h1>Sign up as customer</h1>
         <Formik

@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
-//import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Axios from 'axios'
-//import { Redirect } from 'react-router';
 import '../components/styles/main.css'
 import Button from '@material-ui/core/Button'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import * as yup from 'yup'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { ErrorMessage, Formik, Form, Field } from 'formik'
 
 const Login = () => {
-  ///const[emailSeller, setEmailSeller]=useState("");
-  //const[passwordSeller, setPasswordSeller]=useState("");
-
-  //const[sellerLoginState,setSellerLoginState]=useState("");
   const [passwordShown, setPasswordShown] = useState(false)
 
   // Password toggle handler
@@ -23,15 +18,11 @@ const Login = () => {
   }
 
   const handleLogin = (values) => {
-    Axios.post('http://localhost:3001/loginAdmin', {
+    Axios.post('http://localhost:3001/loginCustomer', {
       email: values.email,
       password: values.password,
     }).then((response) => {
-      if (response.data.msg === 'user logged') {
-        window.location = '/ViewUsers/'
-      } else {
-        alert(response.data.msg)
-      }
+      alert(response.data.msg)
     })
   }
   const validationsLogin = yup.object().shape({
@@ -43,7 +34,7 @@ const Login = () => {
   })
 
   return (
-    <div className='register'>
+    <div className='center-div'>
       <div className='container'>
         <h1>Login</h1>
         <Formik
@@ -61,7 +52,7 @@ const Login = () => {
                 className='form-error'
               />
             </div>
-            {/*Outro campo*/}
+
             <div className='form-group'>
               <Field
                 name='password'
@@ -70,6 +61,7 @@ const Login = () => {
                 type={passwordShown ? 'text' : 'password'}
               />
               <VisibilityOffIcon onClick={togglePassword} />
+
               <ErrorMessage
                 component='span'
                 name='password'
@@ -81,16 +73,25 @@ const Login = () => {
               type='submit'
               variant='contained'
               style={{
+                height: '2%',
+                width: '30%',
                 color: 'black',
                 border: '2px solid',
                 backgroundColor: '#8a9c8f',
                 fontSize: '15px',
               }}
             >
-              Login
+              Sign In
             </Button>
           </Form>
         </Formik>
+        <p>
+          <Link to='/resetPassword'> Forgot Password</Link>
+        </p>
+        <p>
+          Don't have an account
+          <Link to='/register/type'> Sign-up</Link>
+        </p>
       </div>
     </div>
   )

@@ -9,6 +9,7 @@ import Cart from './pages/Cart'
 import SignupType from './pages/SignupType'
 import SignupCustomer from './pages/SignupCustomer'
 import SignupSeller from './pages/SignupSeller'
+import ResetPassword from './pages/ResetPassword'
 import {
   BrowserRouter as Router,
   Switch,
@@ -51,6 +52,9 @@ const App = () => {
         </Route>
         <Route path='/SignupSeller'>
           <SignupSeller />
+        </Route>{' '}
+        <Route path='/resetPassword'>
+          <ResetPassword />
         </Route>
       </Switch>
       <HomeButton />

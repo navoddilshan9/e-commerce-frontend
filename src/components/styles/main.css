@@ -1,4 +1,4 @@
-.register > .container {
+.center-div > .container {
   width: 400px;
   height: max-content;
   margin: auto;
@@ -9,38 +9,38 @@
   font-family: Roboto, sans-serif;
   box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
 }
-.register > h1 {
+.center-div > h1 {
   margin: 0;
   text-align: left;
   margin-bottom: 10px;
 }
 
-.register > .login-form {
+.center-div > .login-form {
   padding: 5px;
 }
 
-.register > .form-field {
+.center-div > .form-field {
   display: inline-block;
   padding: 5px;
   margin-top: 20px;
   transition: all 0.2s ease-in-out;
 }
 
-.register > .form-error {
+.center-div > .form-error {
   display: block;
   color: red;
   font-size: 0.9em;
   font-weight: 600;
 }
 
-.register > Button {
+.center-div > Button {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 500px;
 }
-.register > .visibility {
+.center-div > .visibility {
   display: inline-block;
 }
-.register > Button:hover {
+.center-div Button:hover {
   background-color: rgb(26, 25, 25);
 }
