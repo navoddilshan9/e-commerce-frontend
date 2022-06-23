@@ -5,6 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import axios from 'axios'
+import { useState } from 'react'
 
 const Container = styled.div`
   height: 60px;
@@ -71,37 +72,50 @@ const MenuItem = styled.div`
 `
 
 const NavBar = () => {
+  const [login, setLogin] = useState(false)
   return (
     <Container>
-      <Wrapper>
-        <Left>
-          <Locationbtn>Select your Location</Locationbtn>
-        </Left>
-        <Center>
-          <SearchContainer>
-            <Input />
-            <Search style={{ color: 'gray', fontSize: '16px' }} />
-          </SearchContainer>
-        </Center>
-        <Right>
-          <Link to='/cart'>
-            <MenuItem>
-              <Badge badgeContent={4} color='primary'>
-                <ShoppingCartIcon />
-              </Badge>
-            </MenuItem>
-          </Link>
-          {/* <MenuItem>
-            <Link to={`/login`}>
-              <Locationbtn> SignIn </Locationbtn>
-            </Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Locationbtn>Register </Locationbtn>
-          </MenuItem> */}
-        </Right>
-      </Wrapper>
+      {login ? (
+        <>
+          <Wrapper>
+            <Left>
+              <Locationbtn>Select your Location</Locationbtn>
+            </Left>
+            <Center>
+              <SearchContainer>
+                <Input />
+                <Search style={{ color: 'gray', fontSize: '16px' }} />
+              </SearchContainer>
+            </Center>
+            <Right>
+              <Link to='/cart'>
+                <MenuItem>
+                  <Badge badgeContent={4} color='primary'>
+                    <ShoppingCartIcon />
+                  </Badge>
+                </MenuItem>
+              </Link>
+            </Right>
+          </Wrapper>
+        </>
+      ) : (
+        <>
+          <Wrapper>
+            <Right>
+              <MenuItem>
+                <Link to={`/login`}>
+                  <Locationbtn> SignIn </Locationbtn>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to={`/register/type`}>
+                  <Locationbtn>Register </Locationbtn>
+                </Link>
+              </MenuItem>
+            </Right>
+          </Wrapper>
+        </>
+      )}
     </Container>
   )
 }

@@ -6,6 +6,9 @@ import Login from './pages/Login'
 import ProductList from './pages/ProductList'
 import HomeButton from './components/HomeButton'
 import Cart from './pages/Cart'
+import SignupType from './pages/SignupType'
+import SignupCustomer from './pages/SignupCustomer'
+import SignupSeller from './pages/SignupSeller'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +17,6 @@ import {
 } from 'react-router-dom'
 
 const App = () => {
-  const user = true
   return (
     <Router>
       <Switch>
@@ -25,32 +27,31 @@ const App = () => {
           {/* <Product /> */}
           <StoreList />
         </Route>
-
         <Route exact path='/store/:id'>
           <ProductList />
         </Route>
-
         <Route exact path='/product/:id'>
           <Product />
         </Route>
-
         <Route path='/cart'>
           <Cart />
         </Route>
-
         {/* <Route exact path='/products'>
           <ProductList />
         </Route> */}
-
         <Route path='/login'>
-          {' '}
           <Login />
         </Route>
-
-        <Route path='/register'>
-          {user ? <Redirect to='/' /> : <Register />}
+        <Route path='/register/type'>
+          <SignupType />
         </Route>
-        {/* <Route path='/cart'>{user ? <Redirect to='/' /> : <Register />}</Route> */}
+        \
+        <Route path='/SignupCustomer'>
+          <SignupCustomer />
+        </Route>
+        <Route path='/SignupSeller'>
+          <SignupSeller />
+        </Route>
       </Switch>
       <HomeButton />
     </Router>

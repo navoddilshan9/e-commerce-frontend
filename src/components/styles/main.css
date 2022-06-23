@@ -1,0 +1,46 @@
+.register > .container {
+  width: 400px;
+  height: max-content;
+  margin: auto;
+  background-color: #ebebeb;
+  padding: 20px 15px;
+  margin-top: 130px;
+  border-radius: 7px;
+  font-family: Roboto, sans-serif;
+  box-shadow: 10px 11px rgba(0, 0, 0, 0.7);
+}
+.register > h1 {
+  margin: 0;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.register > .login-form {
+  padding: 5px;
+}
+
+.register > .form-field {
+  display: inline-block;
+  padding: 5px;
+  margin-top: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.register > .form-error {
+  display: block;
+  color: red;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.register > Button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 500px;
+}
+.register > .visibility {
+  display: inline-block;
+}
+.register > Button:hover {
+  background-color: rgb(26, 25, 25);
+}
