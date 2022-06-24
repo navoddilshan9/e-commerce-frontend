@@ -16,6 +16,12 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
+import Admin from './pages/Admin'
+import AddAdmin from './pages/AddAdmin'
+import Seller from './pages/Seller'
+import AddProduct from './pages/AddProduct'
+import EditProduct from './pages/EditProduct'
+import ViewProduct from './pages/ViewProduct'
 
 const App = () => {
   return (
@@ -46,6 +52,12 @@ const App = () => {
         <Route path='/register/type'>
           <SignupType />
         </Route>
+        <Route path='/admin'>
+          <Admin/>
+        </Route>
+        <Route path='/seller'>
+          <Seller/>
+        </Route>
         \
         <Route path='/SignupCustomer'>
           <SignupCustomer />
@@ -55,6 +67,18 @@ const App = () => {
         </Route>{' '}
         <Route path='/resetPassword'>
           <ResetPassword />
+        </Route>
+        <Route path='/addadmin'>
+          <AddAdmin />
+        </Route>
+        <Route path='/addproduct'>
+          <AddProduct />
+        </Route>
+        <Route path='/viewproduct'>
+          <ViewProduct />
+        </Route>
+        <Route path='/editproduct'>
+          <EditProduct />
         </Route>
       </Switch>
       <HomeButton />
